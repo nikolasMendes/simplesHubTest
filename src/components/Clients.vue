@@ -129,7 +129,7 @@ export default {
     },
     addClient() {
       try {
-        const docRef = doc(db, "clients", "w1H1CDEV7kP5d2lY0gCq");
+        const docRef = doc(db, "clients", this.clientId);
 
         updateDoc(docRef, {
           total: this.clientsTotal + 1,
