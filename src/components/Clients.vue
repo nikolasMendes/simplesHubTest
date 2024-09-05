@@ -95,6 +95,7 @@ export default {
   data() {
     return {
       clientsTotal: 0,
+      clientId: "",
       negativeClient: undefined,
       positiveCliente: undefined,
     };
@@ -108,11 +109,12 @@ export default {
       let docsget = await getDocs(q);
       docsget.forEach((doc) => {
         this.clientsTotal = doc.data().total;
+        this.clientId = doc.id;
       });
     },
     removeClient() {
       try {
-        const docRef = doc(db, "clients", "w1H1CDEV7kP5d2lY0gCq");
+        const docRef = doc(db, "clients", this.clientId);
 
         updateDoc(docRef, {
           total: this.clientsTotal - 1,
